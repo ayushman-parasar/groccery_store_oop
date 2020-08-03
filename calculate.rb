@@ -1,6 +1,7 @@
 require_relative "store"
 require 'terminal-table/import'
 
+
 class Calculate < Store
   attr_reader :order_list, :sale_qty_for_item, :unit_price_of_item, :sale_price_for_item
 
@@ -60,6 +61,7 @@ class Calculate < Store
           without_discount_price = val * unit_price_of_item
           @saving_price << {key => (without_discount_price - price).round(2)}
 
+
         end
       end
     end
@@ -114,4 +116,5 @@ class Calculate < Store
       
     )
   end
+
 end
