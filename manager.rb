@@ -1,8 +1,14 @@
 require_relative "store"
+require_relative "calculate"
 
 
 class Manager
- 
+  attr_accessor  :calculator
+
+  def initialize(calculator)
+    @calculator = calculator
+  end
+
   def take_order
     puts "Enter Your Order"
     @items = gets.chomp.gsub(" ", '').split(",")
@@ -25,8 +31,14 @@ class Manager
         {item => qty}
       end
     end 
-    p array_item_qty
+    checking(array_item_qty)
+  end
+
+  def checking(array)
+    p calculator
+    calculator.calculation(array)
+    
   end
 end
 
-Manager.new.take_order
+Manager.new(Calculate).take_order
