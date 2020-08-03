@@ -87,11 +87,11 @@ class Calculate < Store
   end
   
   def show_cost
-    p "Total cost is : $#{@total_cost}"
+    puts "Total cost is : $#{@total_cost}"
   end
   
   def show_saving
-    p "You saved $#{@total_savings} today"
+    puts "You saved $#{@total_savings} today"
   end
 
   def show_items(array_with_prices, array_with_quantity)
