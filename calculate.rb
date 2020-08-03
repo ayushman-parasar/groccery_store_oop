@@ -1,4 +1,5 @@
 require_relative "store"
+require 'terminal-table/import'
 
 
 class Calculate < Store
@@ -79,7 +80,7 @@ class Calculate < Store
     
   end
   def show_result  
-    
+    show_items(@total_price_array, order_list)
     show_cost
     show_saving
     
@@ -93,5 +94,27 @@ class Calculate < Store
     p "You saved $#{@total_savings} today"
   end
 
-  
+  def show_items(array_with_prices, array_with_quantity)
+    result = []
+    # p array_with_prices, "array in show_items and quantites are",array_with_quantity
+    array_with_prices.each do |item_price|
+      item_price.each do |item_name, item_cost|
+        array_with_quantity.each do |item_quantity|
+          item_quantity.each do |itm_name, itm_qty|
+            if item_name == itm_name
+              result << [(item_name[0].upcase+item_name[1..-1]), itm_qty, "#{item_cost}"]
+            end
+          end
+        end
+      end
+    end
+    # p result, "result"
+    puts 
+    puts Terminal::Table.new(
+      rows: result,
+      headings: ["Item", "Quantity", "Price"]
+      
+    )
+  end
+
 end
