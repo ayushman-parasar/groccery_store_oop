@@ -9,6 +9,6 @@ class Calculate < Store
   
 
   def self.calculation(item)
-    p "checking method #{item}"  
+    p "checking method calculation #{item}"  
   end
 end
