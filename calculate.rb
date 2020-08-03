@@ -60,6 +60,7 @@ class Calculate < Store
           without_discount_price = val * unit_price_of_item
           @saving_price << {key => (without_discount_price - price).round(2)}
 
+
         end
       end
     end
